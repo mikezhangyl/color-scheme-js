@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <div id="content"></div>
+
+    <script src="./lib/color-scheme.js"></script>
+
+    <script>
+    // Pretty much the same exact syntax!
+    var scheme = new ColorScheme;
+    scheme.from_hue(21)         
+            .scheme('triade')   
+            .variation('soft');
+
+    var colors = scheme.colors();
+    colors = colors.map(setPrefix)
+    console.log(colors)
+    var html_content = "<table><tr>";
+    colors.forEach(element => {
+        html_content +="<td width='30px' height='200px' style='background-color: "+ element +"'></td>"
+    });
+    // document.getElementById("content").innerHTML = "<td width='60px' height='30px' style='background-color: #4CAF50'></td>"
+    html_content += "</tr></table>"
+    document.getElementById("content").innerHTML = html_content
+    
+    function setPrefix(value){
+        // console.log(value)
+        // console.log('#' + value)
+        return '#' + value;
+    }
+    </script>
+</body>
+</html>
